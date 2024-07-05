@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Input from "../components/Input";
-// import Select from "../components/Select";
+import Select from "../components/Select";
 
 const selectData = [
   {
@@ -51,34 +51,41 @@ const Lesson5 = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {/* <input
+      <input
         type="text"
+        placeholder="請輸入文字"
         value={inputValue}
         onChange={handleInputChange}
         required
-      /> */}
-      <Input value={inputValue} onChange={handleInputChange} required />
+      />
 
-      <select value={selectValue} onChange={handleSelectChange}>
+      <Input
+        value={inputValue}
+        onChange={handleInputChange}
+        required
+        placeholder="請輸入文字"
+      />
+
+      {/* <select value={selectValue} onChange={handleSelectChange}>
         {selectData.map((item) => (
           <option key={item.value} value={item.value}>
             {item.label}
           </option>
         ))}
-      </select>
-      {/* 
-      <select name="" id="">
+      </select> */}
+
+      {/* <select>
         <option value="1">react</option>
         <option value="2">select</option>
         <option value="3">jsx</option>
       </select> */}
 
-      {/* <Select
+      <Select
         data={selectData}
         value={selectValue}
         onChange={handleSelectChange}
         required
-      /> */}
+      />
 
       <button type="submit">Submit</button>
     </form>

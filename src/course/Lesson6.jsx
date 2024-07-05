@@ -1,22 +1,29 @@
 import Table from "../components/Table";
 import { useState } from "react";
 
+const EnumFields = {
+  /** 專案名稱 */
+  project: "project",
+  number: "number",
+  startDate: "startDate",
+  detail: "detail",
+};
 const tableColumns = [
   {
     title: "專案",
-    field: "project",
+    field: EnumFields.project,
   },
   {
     title: "人數",
-    field: "number",
+    field: EnumFields.number,
   },
   {
     title: "開始日期",
-    field: "startDate",
+    field: EnumFields.startDate,
   },
   {
     title: "其他",
-    field: "detail",
+    field: EnumFields.detail,
   },
 ];
 

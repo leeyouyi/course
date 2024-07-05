@@ -1,19 +1,21 @@
-今天我們要上的是課程5 react form表單
-今天上課的重點是(投影片):
+今天我們要上課程5 React form表單
 
+上課的重點有(投影片):
 1.useState綁定input value
-2.button submit 取得state
-3.表單阻止預設行為
-4.form required (使用表單原因)
-5.select option map bind key
-6.select 取得value及label
-7.input 元件化
-8.select 元件化
+2.阻止表單預設行為及取得state
+3.form required(必填欄位檢核)
+4.select map綁定key
+5.input及select元件化
 
-首先 開啟vscode 
+首先
+先建立input 寫上useState 如右圖
+
+
+開始demo...
+
+開啟vscode 
 在課程資料夾建立檔案 Lesson5.jsx
-打開Lesson5 撰寫課程頁面
-
+在Lesson5 撰寫課程頁面
 const Lesson5 = () => {
   return (
     <form>
@@ -22,52 +24,69 @@ const Lesson5 = () => {
     </form>
   );
 };
-
 export default Lesson5;
+form 表單 button 預設值為type='submit'
 
-form 表單 button 需要type='submit'
+接著建立useSatae綁定input value 
+input 加上value=value  onChange=handleInputChange
+撰寫handleInputChange function
+console.log e.target.value 可以看到state已經綁定
+寫上setInputValue
 
-接著建立useSatae綁定input value onChange
-撰寫handleInputChange
-console.log 可以看到state已經綁定
+回到投影片 
+在button submit時
 
-form 撰寫handleSubmit
+回到vscode
+form onSubmit=handleSubmit 
+撰寫handleSubmit function
 因為form表單會有送出表單預設行為
 需撰寫e.preventDefault阻止表單預設行為
 button submit時
 console.log可以看到我們取得input的value 
 
-再來我們可以使用 input required  attribute(屬性)
+回到投影片 
+input 加上 required 屬性
 可以看到表單會幫我們檢查input是否填寫
+
+回到vscode
+input 加上 required 屬性
 這就是使用form表單的優勢 推薦給大家
 
-接著介紹表單比較常用的 select 
-建立html select option
-接著建立useSatae綁定select value onChange
-
-撰寫handleSelectChange
-console.log state value
-如果想取得label
-建立selectLable state
-e.target.options[e.target.selectedIndex].text
-
-buttom submit 
-console.log input select state
-
+回到投影片
+接著介紹表單比較常用的 select 為什麼要有key...
 在react 我們可以用map渲染option
 建立一個select資料 用資料去更新畫面
 比較特別的是我們用map渲染需要加上'key'
 react 在渲染時會去比對key時有無改變
-如沒有改變就不去渲染 可增加效能
+如沒有改變就不去渲染 這樣可增加效能
+
+回到vscode
+建立 select option
+接著建立useSatae綁定select value 
+select value=value onChange=handleSelectChange
+
+撰寫handleSelectChange function
+console.log state value
+寫上setSelectValue
+如果想取得label
+建立selectLable state
+先取得index
+const index = e.target.selectedIndex
+e.target.options[index].text
+setSelectLabel
+
+buttom submit 
+console.log input 及 select state
 
 之前input 使用required  select 也可以使用
 讓我們加上required 看看
 
-
+回到投影片
 現在我們完成了如何在react上使用表單
 但為了使用方便 
 我們可以把input及select元件化
 
+回到vscode
 在components資料夾建立Input.jsx 記得檔案名稱開頭要大寫
 建立Input retutn function  export default Input
 把課程5的input 複製過來 
@@ -80,7 +99,7 @@ function 參數內給props
 回到課程5 
 引用Input 元件
 把input 改成大寫Input 傳入props
-我們可以看一下畫面 是跟剛剛一樣
+我們可以看一下畫面 是否跟剛剛一樣
 好處是我們可以重復使用這個input
 
 接下來我們一樣把select元件化
