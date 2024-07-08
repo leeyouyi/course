@@ -1,4 +1,4 @@
-今天我們要上課程5 React form表單
+大家好 今天我們要上課程5 React form表單
 
 上課的重點有(投影片):
 1.useState綁定input value
@@ -71,8 +71,8 @@ console.log state value
 如果想取得label
 建立selectLable state
 先取得index
-const index = e.target.selectedIndex
-e.target.options[index].text
+const index = e.nativeEvent.target.selectedIndex
+e.nativeEvent.target[index].text
 setSelectLabel
 
 buttom submit 

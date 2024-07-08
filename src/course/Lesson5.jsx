@@ -9,98 +9,75 @@ const selectData = [
   },
   {
     value: "1",
-    label: "react",
+    label: "option1",
   },
   {
     value: "2",
-    label: "select",
+    label: "option2",
   },
   {
     value: "3",
-    label: "jsx",
-  },
-  {
-    value: "4",
-    label: "mapSelect",
+    label: "option3",
   },
 ];
-
-const Lesson5 = () => {
+function Lesson5() {
   const [inputValue, setInputValue] = useState("");
-
   const [selectValue, setSelectValue] = useState("");
-  const [selectLabel, setSelectLabel] = useState("");
+  const [selectText, setSelectText] = useState("");
+  /** input onChange */
+  const handleInputChange = (e) => {
+    // console.log(e.target.value);
+    setInputValue(e.target.value);
+  };
 
+  /** select onChange */
+  const handleSelectChange = (e) => {
+    // console.log(e.target.value);
+    setSelectValue(e.target.value);
+    const index = e.nativeEvent.target.selectedIndex;
+    const text = e.nativeEvent.target[index].text;
+    setSelectText(text);
+    // console.log(text);
+  };
   /** form submit */
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("inputValue", inputValue);
-    console.log("selectValue", typeof selectValue);
-    console.log("selectLabel", selectLabel);
-  };
-  /** input value change */
-  const handleInputChange = (e) => {
-    // console.log("inputValue", e.target.value);
-    setInputValue(e.target.value);
-  };
-  /** select value change */
-  const handleSelectChange = (e) => {
-    setSelectValue(e.target.value);
-    const index = e.nativeEvent.target.selectedIndex;
-    setSelectLabel(e.nativeEvent.target[index].text);
+    console.log(inputValue);
+    console.log(selectValue);
+    console.log(selectText);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {/* <input
+      <div style={{ marginBottom: "15px" }}>
+        {/* <input
         type="text"
-        placeholder="請輸入文字"
         value={inputValue}
         onChange={handleInputChange}
         required
       /> */}
-      <div
-        style={{
-          marginBottom: "15px",
-        }}
-      >
-        <Input
-          value={inputValue}
-          onChange={handleInputChange}
-          required
-          placeholder="請輸入文字"
-        />
+        <Input value={inputValue} onChange={handleInputChange} required />
       </div>
-
-      {/* <select value={selectValue} onChange={handleSelectChange}>
-        {selectData.map((item) => (
-          <option key={item.value} value={item.value}>
-            {item.label}
+      <div style={{ marginBottom: "15px" }}>
+        {/* 
+      <select value={selectValue} onChange={handleSelectChange}>
+        {selectData.map((el) => (
+          <option key={el.value} value={el.value}>
+            {el.label}
           </option>
         ))}
       </select> */}
-
-      {/* <select>
-        <option value="1">react</option>
-        <option value="2">select</option>
-        <option value="3">jsx</option>
-      </select> */}
-      <div
-        style={{
-          marginBottom: "15px",
-        }}
-      >
         <Select
-          data={selectData}
           value={selectValue}
           onChange={handleSelectChange}
+          data={selectData}
           required
         />
       </div>
 
-      <button type="submit">Submit</button>
+      <button>submit</button>
     </form>
   );
-};
+}
 
 export default Lesson5;
