@@ -20,12 +20,15 @@ const selectData = [
     label: "option3",
   },
 ];
+
 function Lesson5() {
   const [inputValue, setInputValue] = useState("");
   const [selectValue, setSelectValue] = useState("");
   const [selectText, setSelectText] = useState("");
+
   /** input onChange */
   const handleInputChange = (e) => {
+    console.log(e);
     // console.log(e.target.value);
     setInputValue(e.target.value);
   };
@@ -56,7 +59,12 @@ function Lesson5() {
         onChange={handleInputChange}
         required
       /> */}
-        <Input value={inputValue} onChange={handleInputChange} required />
+        <Input
+          name="inputName"
+          value={inputValue}
+          onChange={handleInputChange}
+          required
+        />
       </div>
       <div style={{ marginBottom: "15px" }}>
         {/* 

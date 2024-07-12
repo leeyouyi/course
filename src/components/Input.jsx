@@ -18,10 +18,11 @@ const StyleInput = styled.input`
 `;
 
 function Input(props) {
-  const { value, onChange, required } = props;
+  const { name, value, onChange, required } = props;
   return (
     <StyleInput
       type="text"
+      name={name}
       value={value}
       onChange={onChange}
       required={required}
