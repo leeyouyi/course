@@ -18,10 +18,15 @@ const StyledSelect = styled.select`
   }
 `;
 
-const Select = (props) => {
-  const { data, value, onChange, required } = props;
+const SelectCompleted = (props) => {
+  const { data, name, value, onChange, required } = props;
   return (
-    <StyledSelect value={value} onChange={onChange} required={required}>
+    <StyledSelect
+      name={name}
+      value={value}
+      onChange={onChange}
+      required={required}
+    >
       {data.map((item) => (
         <option key={item.value} value={item.value}>
           {item.label}
@@ -31,4 +36,4 @@ const Select = (props) => {
   );
 };
 
-export default Select;
+export default SelectCompleted;

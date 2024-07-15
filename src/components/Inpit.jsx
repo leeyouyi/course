@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const StyleInput = styled.input`
+const StyledInput = styled.input`
   border-width: 1px;
   border-style: solid;
   outline: 0;
@@ -17,17 +17,17 @@ const StyleInput = styled.input`
   }
 `;
 
-function Input(props) {
-  const { name, value, onChange, required } = props;
+const Input = (props) => {
+  const { name, value, onChange, style, required } = props;
   return (
-    <StyleInput
+    <StyledInput
       type="text"
       name={name}
       value={value}
       onChange={onChange}
+      style={style}
       required={required}
     />
   );
-}
-
+};
 export default Input;

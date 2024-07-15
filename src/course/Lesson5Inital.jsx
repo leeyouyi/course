@@ -1,10 +1,5 @@
 const Lesson5 = () => {
-  return (
-    <form>
-      <input type="text" />
-      <button type="submit">submit</button>
-    </form>
-  );
+  return <input type="text" />;
 };
 
 export default Lesson5;

@@ -1,14 +1,14 @@
-大家好 今天我們要上課程5 React form表單
+大家好 今天要上的是課程5 React form表單
 
 上課的重點有(投影片):
-1.useState綁定input value
-2.阻止表單預設行為及取得state
-3.form required(必填欄位檢核)
-4.select map綁定key
+1.input資料綁定 
+2.渲染列表與key
+3.阻止表單預設行
+4.必填欄位檢核
 5.input及select元件化
 
 首先
-先建立input 寫上useState 如右圖
+先建立input 寫上useState 如上圖
 
 
 開始demo...
@@ -25,7 +25,7 @@ const Lesson5 = () => {
   );
 };
 export default Lesson5;
-form 表單 button 預設值為type='submit'
+
 
 接著建立useSatae綁定input value 
 input 加上value=value  onChange=handleInputChange
@@ -33,32 +33,19 @@ input 加上value=value  onChange=handleInputChange
 console.log e.target.value 可以看到state已經綁定
 寫上setInputValue
 
-回到投影片 
-在button submit時
-
-回到vscode
-form onSubmit=handleSubmit 
-撰寫handleSubmit function
-因為form表單會有送出表單預設行為
-需撰寫e.preventDefault阻止表單預設行為
-button submit時
-console.log可以看到我們取得input的value 
-
-回到投影片 
-input 加上 required 屬性
-可以看到表單會幫我們檢查input是否填寫
-
-回到vscode
-input 加上 required 屬性
-這就是使用form表單的優勢 推薦給大家
 
 回到投影片
-接著介紹表單比較常用的 select 為什麼要有key...
-在react 我們可以用map渲染option
-建立一個select資料 用資料去更新畫面
-比較特別的是我們用map渲染需要加上'key'
+渲染列表與key  
+react在渲染陣列資料時需要有key 
+為什麼要有key...
 react 在渲染時會去比對key時有無改變
-如沒有改變就不去渲染 這樣可增加效能
+如沒有改變就不去渲染 因為預設是使用index為key 
+如果沒key時操作資料可能會跟你預期的畫面不同 
+另一個好處是可以不用全部重新渲染 可增加效能
+
+接下來我們建立一個 select 我們可以用map渲染option
+來建立一個select option資料 
+
 
 回到vscode
 建立 select option
@@ -75,11 +62,32 @@ const index = e.nativeEvent.target.selectedIndex
 e.nativeEvent.target[index].text
 setSelectLabel
 
-buttom submit 
+
+回到投影片 
+在button submit時
+
+回到vscode
+form onSubmit=handleSubmit 
+撰寫handleSubmit function
+因為form表單會有送出表單預設行為
+需撰寫e.preventDefault阻止表單預設行為
+button submit時
+console.log可以看到我們取得input的value  
 console.log input 及 select state
+
+
+回到投影片 
+input 加上 required 屬性
+可以看到表單會幫我們檢查input是否填寫
 
 之前input 使用required  select 也可以使用
 讓我們加上required 看看
+
+回到vscode
+input 加上 required 屬性
+這就是使用form表單的優勢 推薦給大家
+
+
 
 回到投影片
 現在我們完成了如何在react上使用表單

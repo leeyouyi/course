@@ -1,91 +1,107 @@
 import { useState } from "react";
-import Input from "../components/Input";
+import Input from "../components/Inpit";
 import Select from "../components/Select";
 
-const selectData = [
+const SelectData = [
   {
     value: "",
-    label: "",
+    text: "",
   },
   {
     value: "1",
-    label: "option1",
+    text: "option1",
   },
   {
     value: "2",
-    label: "option2",
-  },
-  {
-    value: "3",
-    label: "option3",
+    text: "option2",
   },
 ];
-
-function Lesson5() {
-  const [inputValue, setInputValue] = useState("");
-  const [selectValue, setSelectValue] = useState("");
-  const [selectText, setSelectText] = useState("");
-
-  /** input onChange */
-  const handleInputChange = (e) => {
-    console.log(e);
-    // console.log(e.target.value);
-    setInputValue(e.target.value);
+// 欄位name
+const EnumMaster = {
+  inputValue: "inputValue",
+  selectValue: "selectValue",
+};
+// 預設值
+const initMaster = {
+  [EnumMaster.inputValue]: "",
+  [EnumMaster.selectValue]: "",
+};
+const Lesson5 = () => {
+  // const [inputValue, setInputValue] = useState("");
+  // const [selectValue, setSelectValue] = useState("");
+  const [master, setMaster] = useState(initMaster);
+  // input change
+  // const handleInputChange = (e) => {
+  //   // console.log(e.target.value);
+  //   setInputValue(e.target.value);
+  // };
+  // select change
+  // const handleSelectChange = (e) => {
+  //   // console.log(e.target.value);
+  //   setSelectValue(e.target.value);
+  // };
+  //全部欄位change
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setMaster((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
-
-  /** select onChange */
-  const handleSelectChange = (e) => {
-    // console.log(e.target.value);
-    setSelectValue(e.target.value);
-    const index = e.nativeEvent.target.selectedIndex;
-    const text = e.nativeEvent.target[index].text;
-    setSelectText(text);
-    // console.log(text);
-  };
-  /** form submit */
+  // form submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputValue);
-    console.log(selectValue);
-    console.log(selectText);
+    console.log(master);
   };
-
   return (
     <form onSubmit={handleSubmit}>
-      <div style={{ marginBottom: "15px" }}>
-        {/* <input
+      <Input
+        name={EnumMaster.inputValue}
+        value={master[EnumMaster.inputValue]}
+        onChange={handleChange}
+        style={{ marginBottom: "10px" }}
+        required
+      />
+      {/* <input
         type="text"
-        value={inputValue}
-        onChange={handleInputChange}
+        name={EnumMaster.inputValue}
+        value={master[EnumMaster.inputValue]}
+        onChange={handleChange}
+        style={{ marginBottom: "10px" }}
         required
       /> */}
-        <Input
-          name="inputName"
-          value={inputValue}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-      <div style={{ marginBottom: "15px" }}>
-        {/* 
-      <select value={selectValue} onChange={handleSelectChange}>
-        {selectData.map((el) => (
-          <option key={el.value} value={el.value}>
-            {el.label}
-          </option>
-        ))}
-      </select> */}
-        <Select
-          value={selectValue}
-          onChange={handleSelectChange}
-          data={selectData}
-          required
-        />
-      </div>
+      <br />
 
-      <button>submit</button>
+      <Select
+        style={{ width: "170px", marginBottom: "10px" }}
+        name={EnumMaster.selectValue}
+        value={master[EnumMaster.selectValue]}
+        onChange={handleChange}
+        required
+        data={SelectData}
+      />
+      {/* <select
+        style={{ width: "170px" }}
+        name={EnumMaster.selectValue}
+        value={master[EnumMaster.selectValue]}
+        onChange={handleChange}
+        required
+      >
+        {SelectData.map((item) => {
+          return (
+            <option key={item.value} value={item.value}>
+              {item.text}
+            </option>
+          );
+        })}
+      </select> */}
+
+      <div>
+        <button>submit</button>
+      </div>
     </form>
   );
-}
+};
 
 export default Lesson5;

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const StyleSelect = styled.select`
+const StyledSelect = styled.select`
   min-width: 220px;
   border-width: 1px;
   border-style: solid;
@@ -17,20 +17,24 @@ const StyleSelect = styled.select`
     border-width: 2px;
   }
 `;
-
 const Select = (props) => {
-  const { value, onChange, data, required } = props;
+  const { style, name, value, onChange, required, data } = props;
   return (
-    <>
-      <StyleSelect value={value} onChange={onChange} required={required}>
-        {data.map((el) => (
-          <option key={el.value} value={el.value}>
-            {el.label}
+    <StyledSelect
+      style={style}
+      name={name}
+      value={value}
+      onChange={onChange}
+      required={required}
+    >
+      {data.map((item) => {
+        return (
+          <option key={item.value} value={item.value}>
+            {item.text}
           </option>
-        ))}
-      </StyleSelect>
-    </>
+        );
+      })}
+    </StyledSelect>
   );
 };
-
 export default Select;

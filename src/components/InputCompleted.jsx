@@ -17,12 +17,12 @@ const StyledInput = styled.input`
   }
 `;
 
-const Input = (props) => {
-  const { placeholder, value, onChange, required } = props;
+const InputCompleted = (props) => {
+  const { name, value, onChange, required } = props;
   return (
     <StyledInput
       type="text"
-      placeholder={placeholder}
+      name={name}
       value={value}
       onChange={onChange}
       required={required}
@@ -30,4 +30,4 @@ const Input = (props) => {
   );
 };
 
-export default Input;
+export default InputCompleted;
