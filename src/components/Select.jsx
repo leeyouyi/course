@@ -17,6 +17,7 @@ const StyledSelect = styled.select`
     border-width: 2px;
   }
 `;
+
 const Select = (props) => {
   const { style, name, value, onChange, required, data } = props;
   return (
@@ -27,14 +28,15 @@ const Select = (props) => {
       onChange={onChange}
       required={required}
     >
-      {data.map((item) => {
+      {data.map((itme) => {
         return (
-          <option key={item.value} value={item.value}>
-            {item.text}
+          <option key={"option" + itme.value} value={itme.value}>
+            {itme.text}
           </option>
         );
       })}
     </StyledSelect>
   );
 };
+
 export default Select;

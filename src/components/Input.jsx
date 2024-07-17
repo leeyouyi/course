@@ -16,7 +16,6 @@ const StyledInput = styled.input`
     border-width: 2px;
   }
 `;
-
 const Input = (props) => {
   const { name, value, onChange, style, required } = props;
   return (
@@ -30,4 +29,5 @@ const Input = (props) => {
     />
   );
 };
+
 export default Input;

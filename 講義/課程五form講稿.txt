@@ -1,4 +1,4 @@
-大家好 今天要上的是課程5 React form表單
+大家好 今天要上的是第五課程 React form表單
 
 上課的重點有(投影片):
 1.input資料綁定 
@@ -36,11 +36,11 @@ console.log e.target.value 可以看到state已經綁定
 
 回到投影片
 渲染列表與key  
-react在渲染陣列資料時需要有key 
-為什麼要有key...
-react 在渲染時會去比對key時有無改變
-如沒有改變就不去渲染 因為預設是使用index為key 
-如果沒key時操作資料可能會跟你預期的畫面不同 
+
+react預設是使用index為key 
+在渲染時會去比對key值有無改變
+沒有改變就不去渲染 
+如果key時操作資料可能會跟你預期的畫面不同 
 另一個好處是可以不用全部重新渲染 可增加效能
 
 接下來我們建立一個 select 我們可以用map渲染option

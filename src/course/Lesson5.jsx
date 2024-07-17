@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Input from "../components/Inpit";
+import Input from "../components/Input";
 import Select from "../components/Select";
 
 const SelectData = [
@@ -15,13 +15,18 @@ const SelectData = [
     value: "2",
     text: "option2",
   },
+  {
+    value: "3",
+    text: "option3",
+  },
 ];
-// 欄位name
+
+// 欄位名稱
 const EnumMaster = {
   inputValue: "inputValue",
   selectValue: "selectValue",
 };
-// 預設值
+// 初始值
 const initMaster = {
   [EnumMaster.inputValue]: "",
   [EnumMaster.selectValue]: "",
@@ -32,15 +37,15 @@ const Lesson5 = () => {
   const [master, setMaster] = useState(initMaster);
   // input change
   // const handleInputChange = (e) => {
-  //   // console.log(e.target.value);
+  //   console.log(e.target.value);
   //   setInputValue(e.target.value);
   // };
-  // select change
+  // // select change
   // const handleSelectChange = (e) => {
-  //   // console.log(e.target.value);
+  //   console.log(e.target.value);
   //   setSelectValue(e.target.value);
   // };
-  //全部欄位change
+  //共用 onChange
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -49,7 +54,7 @@ const Lesson5 = () => {
       [name]: value,
     }));
   };
-  // form submit
+  //form submit
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(master);
@@ -72,9 +77,8 @@ const Lesson5 = () => {
         required
       /> */}
       <br />
-
       <Select
-        style={{ width: "170px", marginBottom: "10px" }}
+        style={{ width: "170px" }}
         name={EnumMaster.selectValue}
         value={master[EnumMaster.selectValue]}
         onChange={handleChange}
@@ -88,18 +92,16 @@ const Lesson5 = () => {
         onChange={handleChange}
         required
       >
-        {SelectData.map((item) => {
+        {SelectData.map((itme) => {
           return (
-            <option key={item.value} value={item.value}>
-              {item.text}
+            <option key={"option" + itme.value} value={itme.value}>
+              {itme.text}
             </option>
           );
         })}
       </select> */}
-
-      <div>
-        <button>submit</button>
-      </div>
+      <br />
+      <button>submit</button>
     </form>
   );
 };
