@@ -7,7 +7,9 @@ const EnumFields = {
   project: "project",
   number: "number",
   startDate: "startDate",
+  link: "link",
   detail: "detail",
+  img: "img",
 };
 
 const tableColumns = [
@@ -25,7 +27,7 @@ const tableColumns = [
   },
   {
     title: "連結",
-    field: EnumFields.detail,
+    field: EnumFields.link,
   },
   {
     title: "詳細",
@@ -33,7 +35,7 @@ const tableColumns = [
   },
   {
     title: "其他",
-    field: EnumFields.detail,
+    field: EnumFields.img,
   },
 ];
 
@@ -64,15 +66,22 @@ const tableData = [
   },
 ];
 
+const DetailView = ({ rowData, onBack }) => (
+  <div>
+    {rowData?.project} 詳細內容
+    <button onClick={onBack}>返回</button>
+  </div>
+);
+
 const Lesson6 = () => {
-  const [rowData, setRowData] = useState(false);
+  const [rowData, setRowData] = useState(null);
   const [showDetail, setShowDetail] = useState(false);
 
   const renderCell = (row, field) => {
     switch (field) {
-      case "link":
+      case EnumFields.link:
         return <a href={row[field]}>{field}</a>;
-      case "detail":
+      case EnumFields.detail:
         return (
           <button
             onClick={() => {
@@ -83,7 +92,8 @@ const Lesson6 = () => {
             {row[field]}
           </button>
         );
-      case "img":
+
+      case EnumFields.img:
         return (
           <div style={{ width: "30px", height: "20px" }}>
             <img
@@ -122,10 +132,7 @@ const Lesson6 = () => {
           </tbody>
         </table>
       ) : (
-        <div>
-          {rowData.project} 詳細內容
-          <button onClick={() => setShowDetail(false)}>返回</button>
-        </div>
+        <DetailView rowData={rowData} onBack={() => setShowDetail(false)} />
       )}
       <br />
       {!showDetail ? (
@@ -135,10 +142,7 @@ const Lesson6 = () => {
           renderCell={renderCell}
         />
       ) : (
-        <div>
-          {rowData.project} 詳細內容
-          <button onClick={() => setShowDetail(false)}>返回</button>
-        </div>
+        <DetailView rowData={rowData} onBack={() => setShowDetail(false)} />
       )}
     </>
   );

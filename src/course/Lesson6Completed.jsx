@@ -48,14 +48,15 @@ const tableData = [
     detail: "詳細",
   },
 ];
+// 6-1
 
 const Lesson6 = () => {
-  const [rowData, setRowData] = useState(false);
+  const [rowData, setRowData] = useState(null);
   const [showDetail, setShowDetail] = useState(false);
 
   const renderCell = (row, field) => {
     switch (field) {
-      case "detail":
+      case EnumFields.detail:
         return (
           <button
             onClick={() => {
@@ -98,7 +99,7 @@ const Lesson6 = () => {
         />
       ) : (
         <div>
-          {rowData.project} 詳細內容
+          {rowData?.project} 詳細內容
           <button onClick={() => setShowDetail(false)}>返回</button>
         </div>
       )}
