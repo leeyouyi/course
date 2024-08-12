@@ -1,6 +1,5 @@
 import Table from "../components/Table";
 import { useState } from "react";
-import viteLogo from "/vite.svg";
 
 const EnumFields = {
   /** 專案名稱 */
@@ -24,14 +23,6 @@ const tableColumns = [
     field: EnumFields.startDate,
   },
   {
-    title: "連結",
-    field: EnumFields.detail,
-  },
-  {
-    title: "詳細",
-    field: EnumFields.detail,
-  },
-  {
     title: "其他",
     field: EnumFields.detail,
   },
@@ -42,25 +33,19 @@ const tableData = [
     project: "我的專案",
     number: 1,
     startDate: "2024/6/20",
-    link: "https://www.google.com.tw/",
     detail: "詳細",
-    img: viteLogo,
   },
   {
     project: "公司專案",
     number: 10,
     startDate: "2024/4/20",
-    link: "https://www.google.com.tw/",
     detail: "詳細",
-    img: viteLogo,
   },
   {
     project: "其他專案",
     number: 5,
     startDate: "2024/12/10",
-    link: "https://www.google.com.tw/",
     detail: "詳細",
-    img: viteLogo,
   },
 ];
 
@@ -70,8 +55,6 @@ const Lesson6 = () => {
 
   const renderCell = (row, field) => {
     switch (field) {
-      case "link":
-        return <a href={row[field]}>{field}</a>;
       case "detail":
         return (
           <button
@@ -83,51 +66,30 @@ const Lesson6 = () => {
             {row[field]}
           </button>
         );
-      case "img":
-        return (
-          <div style={{ width: "30px", height: "20px" }}>
-            <img
-              style={{ width: "100%", height: "100%", padding: "0" }}
-              src={row[field]}
-              className="logo"
-              alt="Vite logo"
-            />
-          </div>
-        );
       default:
         return row[field];
     }
   };
   return (
+    // <table>
+    //   <thead>
+    //     <tr>
+    //       {tableColumns.map((column) => (
+    //         <th key={column.field}>{column.title}</th>
+    //       ))}
+    //     </tr>
+    //   </thead>
+    //   <tbody>
+    //     {tableData.map((data, i) => (
+    //       <tr key={"row" + i}>
+    //         {Object.keys(data).map((key) => (
+    //           <td key={key}>{data[key]}</td>
+    //         ))}
+    //       </tr>
+    //     ))}
+    //   </tbody>
+    // </table>
     <>
-      {!showDetail ? (
-        <table>
-          <thead>
-            <tr>
-              {tableColumns.map((column) => (
-                <th key={column.field}>{column.title}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {tableData.map((row, i) => (
-              <tr key={"row" + i}>
-                {Object.keys(row).map((key) => (
-                  <td key={key}>
-                    {renderCell ? renderCell(row, key) : row[key]}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <div>
-          {rowData.project} 詳細內容
-          <button onClick={() => setShowDetail(false)}>返回</button>
-        </div>
-      )}
-      <br />
       {!showDetail ? (
         <Table
           columns={tableColumns}

@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import styled from "@emotion/styled";
 
 const StyledTable = styled.table`
@@ -47,14 +46,4 @@ const Table = (props) => {
   );
 };
 
-Table.propTypes = {
-  columns: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      field: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  renderCell: PropTypes.func,
-};
 export default Table;

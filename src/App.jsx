@@ -2,8 +2,8 @@
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
 import "./App.css";
-import Lesson5 from "./course/Lesson5";
-// import Lesson6 from "./course/Lesson6";
+// import Lesson5 from "./course/Lesson5";
+import Lesson6 from "./course/Lesson6";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -31,7 +31,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-      <Lesson5 />
+      <Lesson6 />
       {/* <Lesson6 /> */}
     </>
   );

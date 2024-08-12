@@ -2,7 +2,7 @@ import { useState } from "react";
 import Input from "../components/Input";
 import Select from "../components/Select";
 
-const SelectData = [
+const selectData = [
   {
     value: "",
     text: "",
@@ -21,31 +21,33 @@ const SelectData = [
   },
 ];
 
-// 欄位名稱
-const EnumMaster = {
+//欄位名稱
+const enumMaster = {
   inputValue: "inputValue",
   selectValue: "selectValue",
 };
-// 初始值
+//初始值
 const initMaster = {
-  [EnumMaster.inputValue]: "",
-  [EnumMaster.selectValue]: "",
+  [enumMaster.inputValue]: "",
+  [enumMaster.selectValue]: "",
 };
+
 const Lesson5 = () => {
   // const [inputValue, setInputValue] = useState("");
   // const [selectValue, setSelectValue] = useState("");
   const [master, setMaster] = useState(initMaster);
+
   // input change
   // const handleInputChange = (e) => {
-  //   console.log(e.target.value);
+  //   // console.log(e.target.value);
   //   setInputValue(e.target.value);
   // };
   // // select change
   // const handleSelectChange = (e) => {
-  //   console.log(e.target.value);
+  //   // console.log(e.target.value);
   //   setSelectValue(e.target.value);
   // };
-  //共用 onChange
+  //共用onChange
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -54,52 +56,58 @@ const Lesson5 = () => {
       [name]: value,
     }));
   };
-  //form submit
+
+  // form submit
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(master);
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <Input
-        name={EnumMaster.inputValue}
-        value={master[EnumMaster.inputValue]}
+        name={enumMaster.inputValue}
+        value={master[enumMaster.inputValue]}
         onChange={handleChange}
         style={{ marginBottom: "10px" }}
         required
       />
       {/* <input
         type="text"
-        name={EnumMaster.inputValue}
-        value={master[EnumMaster.inputValue]}
+        name={enumMaster.inputValue}
+        value={master[enumMaster.inputValue]}
         onChange={handleChange}
         style={{ marginBottom: "10px" }}
         required
       /> */}
       <br />
+
       <Select
         style={{ width: "170px" }}
-        name={EnumMaster.selectValue}
-        value={master[EnumMaster.selectValue]}
+        name={enumMaster.selectValue}
+        value={master[enumMaster.selectValue]}
         onChange={handleChange}
         required
-        data={SelectData}
+        data={selectData}
       />
       {/* <select
         style={{ width: "170px" }}
-        name={EnumMaster.selectValue}
-        value={master[EnumMaster.selectValue]}
+        name={enumMaster.selectValue}
+        value={master[enumMaster.selectValue]}
         onChange={handleChange}
         required
       >
-        {SelectData.map((itme) => {
+        {selectData.map((item) => {
           return (
-            <option key={"option" + itme.value} value={itme.value}>
-              {itme.text}
+            <option key={"option" + item.value} value={item.value}>
+              {item.text}
             </option>
           );
-        })}
-      </select> */}
+        })} */}
+      {/* <option value=""></option>
+        <option value="1">option1</option>
+        <option value="2">option2</option> */}
+      {/* </select> */}
       <br />
       <button>submit</button>
     </form>
