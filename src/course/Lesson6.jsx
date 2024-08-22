@@ -1,17 +1,23 @@
 import Table from "../components/Table";
-import { useState } from "react";
 import viteLogo from "/vite.svg";
 
+/** 欄位名稱 */
 const EnumFields = {
+  /** key */
+  id: "id",
   /** 專案名稱 */
   project: "project",
+  /** 人數 */
   number: "number",
+  /** 開始日期 */
   startDate: "startDate",
+  /** 連結 */
   link: "link",
-  detail: "detail",
+  /** 圖片 */
   img: "img",
 };
 
+/** thead欄位資料 */
 const tableColumns = [
   {
     title: "專案",
@@ -30,69 +36,49 @@ const tableColumns = [
     field: EnumFields.link,
   },
   {
-    title: "詳細",
-    field: EnumFields.detail,
-  },
-  {
-    title: "其他",
+    title: "圖片",
     field: EnumFields.img,
   },
 ];
 
+/** table資料 */
 const tableData = [
   {
+    id: "0",
     project: "我的專案",
     number: 1,
     startDate: "2024/6/20",
     link: "https://www.google.com.tw/",
-    detail: "詳細",
     img: viteLogo,
   },
   {
+    id: "1",
     project: "公司專案",
     number: 10,
     startDate: "2024/4/20",
     link: "https://www.google.com.tw/",
-    detail: "詳細",
     img: viteLogo,
   },
   {
+    id: "2",
     project: "其他專案",
     number: 5,
     startDate: "2024/12/10",
     link: "https://www.google.com.tw/",
-    detail: "詳細",
     img: viteLogo,
   },
 ];
 
-const DetailView = ({ rowData, onBack }) => (
-  <div>
-    {rowData?.project} 詳細內容
-    <button onClick={onBack}>返回</button>
-  </div>
-);
-
 const Lesson6 = () => {
-  const [rowData, setRowData] = useState(null);
-  const [showDetail, setShowDetail] = useState(false);
-
+  /** 自訂渲染 */
   const renderCell = (row, field) => {
     switch (field) {
       case EnumFields.link:
-        return <a href={row[field]}>{field}</a>;
-      case EnumFields.detail:
         return (
-          <button
-            onClick={() => {
-              setRowData(row);
-              setShowDetail(true);
-            }}
-          >
-            {row[field]}
-          </button>
+          <a href={row[field]} target="_blank">
+            {field}
+          </a>
         );
-
       case EnumFields.img:
         return (
           <div style={{ width: "30px", height: "20px" }}>
@@ -108,42 +94,36 @@ const Lesson6 = () => {
         return row[field];
     }
   };
+
   return (
     <>
-      {!showDetail ? (
-        <table>
-          <thead>
-            <tr>
-              {tableColumns.map((column) => (
-                <th key={column.field}>{column.title}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {tableData.map((row, i) => (
-              <tr key={"row" + i}>
-                {Object.keys(row).map((key) => (
+      <table>
+        <thead>
+          <tr>
+            {tableColumns.map((column) => (
+              <th key={column.field}>{column.title}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {tableData.map((row) => (
+            <tr key={row.id}>
+              {Object.keys(row).map((key) => {
+                if (key === "id") return <></>;
+                return (
                   <td key={key}>
                     {renderCell ? renderCell(row, key) : row[key]}
                   </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <DetailView rowData={rowData} onBack={() => setShowDetail(false)} />
-      )}
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
       <br />
-      {!showDetail ? (
-        <Table
-          columns={tableColumns}
-          data={tableData}
-          renderCell={renderCell}
-        />
-      ) : (
-        <DetailView rowData={rowData} onBack={() => setShowDetail(false)} />
-      )}
+
+      <Table columns={tableColumns} data={tableData} renderCell={renderCell} />
     </>
   );
 };

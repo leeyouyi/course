@@ -16,18 +16,18 @@ const StyledInput = styled.input`
     border-width: 2px;
   }
 `;
-
-const InputCompleted = (props) => {
-  const { name, value, onChange, required } = props;
+const Input = (props) => {
+  const { name, value, onChange, style, required } = props;
   return (
     <StyledInput
       type="text"
       name={name}
       value={value}
       onChange={onChange}
+      style={style}
       required={required}
     />
   );
 };
 
-export default InputCompleted;
+export default Input;

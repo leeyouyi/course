@@ -17,6 +17,7 @@ const StyledSelect = styled.select`
     border-width: 2px;
   }
 `;
+
 const Select = (props) => {
   const { style, name, value, onChange, required, data } = props;
   return (

@@ -22,6 +22,7 @@ const StyledTable = styled.table`
     }
   }
 `;
+
 const Table = (props) => {
   const { columns, data, renderCell } = props;
   return (
@@ -34,11 +35,16 @@ const Table = (props) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((row, i) => (
-          <tr key={"row" + i}>
-            {Object.keys(row).map((key) => (
-              <td key={key}>{renderCell ? renderCell(row, key) : data[key]}</td>
-            ))}
+        {data.map((row) => (
+          <tr key={row.id}>
+            {Object.keys(row).map((key) => {
+              if (key === "id") return <></>;
+              return (
+                <td key={key}>
+                  {renderCell ? renderCell(row, key) : row[key]}
+                </td>
+              );
+            })}
           </tr>
         ))}
       </tbody>
